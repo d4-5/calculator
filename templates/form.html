@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff; /* White background */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px; /* Add some margin at the top of the form */
+            text-align: center; /* Center the form content */
+        }
+
+        .input-container {
+            margin-bottom: 10px;
+            text-align: center; /* Align the label and input to the center */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .math {
+            display: inline-block;
+            font-size: 18px;
+            width: 100px; /* Set a specific width for the label */
+            margin-right: 10px; /* Add margin between label and input */
+        }
+
+        input {
+            padding: 10px; /* Adjust padding for better input styling */
+            width: 300px; /* Set a specific width for the input fields */
+            text-align: left; /* Align the input text to the left */
+        }
+
+        button {
+            display: inline-block;
+            width: 200px; /* Set a specific width for the button */
+            padding: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            background-color: #fff;
+            margin-top: 10px; /* Add margin at the top of the button */
+        }
+
+        button:hover {
+            background-color: #333;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif; /* Use Roboto font for error messages */
+            margin-top: 10px; /* Add margin at the top of the error message */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var equationType = "{{ equation_type }}";
+            if (equationType !== 'type1' && equationType !== 'type2') {
+                window.location.href = '/';
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Калькулятор</h1>
+    <form action="/solve" method="get">
+        <input type="hidden" name="equation_type" value="{{equation_type}}">
+        <div class="input-container">
+            <label for="a" class="math">\(a\):</label>
+            <input type="text" name="a" required>
+        </div>
+        <div class="input-container">
+            <label for="phi" class="math">\(\phi(x)\):</label>
+            <input type="text" name="phi" required>
+        </div>
+        <div class="input-container">
+            <label for="psi" class="math">\(\psi(x)\):</label>
+            <input type="text" name="psi" required>
+        </div>
+        {% if equation_type == 'type1' %}
+            <div class="input-container">
+                <label for="mu" class="math">\(\mu(t)\):</label>
+                <input type="text" name="mu" required>
+            </div>
+        {% elif equation_type == 'type2' %}
+            <div class="input-container">
+                <label for="mu" class="math">\(\nu(t)\):</label>
+                <input type="text" name="mu" required>
+            </div>
+        {% endif %}
+        <div class="input-container">
+            <label for="f" class="math">\(f(x,t)\):</label>
+            <input type="text" name="f" required>
+        </div>
+        <button type="submit">Розв'язати</button>
+    </form>
+    {% if error %}
+        <div class="error-message">{{ error }}</div>
+    {% endif %}
+</body>
+</html>

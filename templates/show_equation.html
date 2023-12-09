@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff; /* White background */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .latex-container {
+            margin: 10px; /* Adjust the margin to reduce space between formulas */
+            font-size: 18px;
+            white-space: pre-wrap; /* Preserve line breaks */
+            word-break: break-word; /* Break words to prevent overflow */
+            max-width: 80vw; /* Set a maximum width to prevent stretching */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="latex-container">
+            {{ calculated_equation | safe }}
+        </div>
+    </div>
+</body>
+</html>
