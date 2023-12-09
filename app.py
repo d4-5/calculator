@@ -32,7 +32,3 @@ def solve_equation():
         return render_template('show_equation.html', calculated_equation=calculated_equation)
     except Exception as e:
         return render_template('form.html', equation_type=equation_type, error=str(e))
-
-
-if __name__ == '__main__':
-    app.run()
