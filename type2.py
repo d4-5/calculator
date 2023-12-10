@@ -40,7 +40,7 @@ def type2(a, phi, psi, mu, f):
     \end{{cases}}
 
     \begin{{align}}
-        \text{{При}}\ t < \frac{{x}}{{a}}, \ x > 0 \\
+        \text{{При}}\ t < \frac{{x}}{{{latex(a)}}}, \ x > 0 \\
     \end{{align}}
     \begin{{align}}
     I_1 &= {latex(nu1_I1)} \\
@@ -50,7 +50,7 @@ def type2(a, phi, psi, mu, f):
     \end{{align}}
 
     \begin{{align}}
-        \text{{При}}\ t > \frac{{x}}{{a}}, \ x > 0
+        \text{{При}}\ t > \frac{{x}}{{{latex(a)}}}, \ x > 0
     \end{{align}}
     \begin{{align}}
     I_1 &= {latex(nu2_I1)} \\
@@ -80,8 +80,8 @@ def type2(a, phi, psi, mu, f):
     \text{{Відповідь}}
     \end{{align}}
     \begin{{align}}
-        \text{{Якщо }} t < \frac{{x}}{{{latex(a)}}}, \ \text{{то }} u(x,t) = {latex(nu1)} \\
-        \text{{Якщо }} t > \frac{{x}}{{{latex(a)}}}, \ \text{{то }} u(x,t) = {latex(simplify(nu2 + omega))}
+        &\text{{Якщо }} t < \frac{{x}}{{{latex(a)}}}, \ \text{{то }} u(x,t) = {latex(nu1)} \\
+        &\text{{Якщо }} t > \frac{{x}}{{{latex(a)}}}, \ \text{{то }} u(x,t) = {latex(simplify(nu2 + omega))}
     \end{{align}}
     """
 
