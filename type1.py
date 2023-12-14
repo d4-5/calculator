@@ -1,6 +1,6 @@
 from sympy import symbols, latex, integrate, simplify
 
-def type1(a, phi, psi, mu, f):
+def type1(a, f, phi, psi, mu):
     x, t, xi, tau = symbols('x t xi tau')
 
     nu1_I1 = simplify((phi.subs(x, x+a*t)+phi.subs(x, x-a*t))/2)

@@ -81,14 +81,6 @@
             margin-top: 10px; /* Add margin at the top of the error message */
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var equationType = "{{ equation_type }}";
-            if (equationType !== 'type1' && equationType !== 'type2') {
-                window.location.href = '/';
-            }
-        });
-    </script>
 </head>
 <body>
     <h1>Калькулятор</h1>
@@ -97,6 +89,10 @@
         <div class="input-container">
             <label for="a" class="math">\(a\):</label>
             <input type="text" name="a" required>
+        </div>
+        <div class="input-container">
+            <label for="f" class="math">\(f(x,t)\):</label>
+            <input type="text" name="f" required>
         </div>
         <div class="input-container">
             <label for="phi" class="math">\(\varphi(x)\):</label>
@@ -116,11 +112,16 @@
                 <label for="mu" class="math">\(\nu(t)\):</label>
                 <input type="text" name="mu" required>
             </div>
+        {% elif equation_type == 'type3' %}
+            <div class="input-container">
+                <label for="mu" class="math">\(\nu(t)\):</label>
+                <input type="text" name="mu" required>
+            </div>
+            <div class="input-container">
+                <label for="h" class="math">\(\h\):</label>
+                <input type="text" name="h" required>
+            </div>
         {% endif %}
-        <div class="input-container">
-            <label for="f" class="math">\(f(x,t)\):</label>
-            <input type="text" name="f" required>
-        </div>
         <button type="submit">Розв'язати</button>
     </form>
     {% if error %}
@@ -134,6 +135,5 @@
             <li>\(\pi\): pi</li>
         </ul>
     </div>
-    
 </body>
 </html>

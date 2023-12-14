@@ -25,9 +25,11 @@ def solve_equation():
         f = sympify(request.args.get('f'))
 
         if equation_type == "type1":
-            calculated_equation = type1(a, phi, psi, mu, f)
-        else :
-            calculated_equation = type2(a, phi, psi, mu, f)
+            calculated_equation = type1(a, f, phi, psi, mu)
+        elif equation_type == "type2":
+            calculated_equation = type2(a, f, phi, psi, mu)
+        else:
+            return render_template('index.html')
 
         return render_template('show_equation.html', calculated_equation=calculated_equation)
     except Exception as e:
